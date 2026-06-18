@@ -1,7 +1,7 @@
 # EXAMPLE USAGE:
 #
 #   Refer for explanation to following link:
-#   https://lefthook.dev/configuration/
+#     https://lefthook.dev/configuration/
 #
 # pre-push:
 #   jobs:
@@ -40,14 +40,6 @@
 #
 #     - script: "hello.go"
 #       runner: go run
-
-pre-commit:
-  parallel: true
-  commands:
-    lint:
-      run: pnpm lint
-    checkType:
-      run: pnpm check:type
 
 post-merge:
   commands:

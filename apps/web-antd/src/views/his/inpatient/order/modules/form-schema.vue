@@ -3,7 +3,7 @@ import type { HisOrderApi } from '#/api/his/order';
 
 import { ref, watch } from 'vue';
 
-import { Card, Descriptions, DescriptionsItem, Form, FormItem, Input, Radio, RadioGroup, Tag, Textarea } from 'ant-design-vue';
+import { Card, Descriptions, DescriptionsItem, Form, FormItem, Radio, RadioGroup, Tag, Textarea } from 'ant-design-vue';
 
 import { getOrder } from '#/api/his/order';
 

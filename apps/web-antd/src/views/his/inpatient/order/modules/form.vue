@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { HisOrderApi } from '#/api/his/order';
-
 import { computed, ref } from 'vue';
 
 import { useVbenModal } from '@vben/common-ui';

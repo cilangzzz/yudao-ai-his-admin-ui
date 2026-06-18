@@ -8,9 +8,8 @@ import { message } from 'ant-design-vue';
 
 import { ACTION_ICON, TableAction, useVbenVxeGrid } from '#/adapter/vxe-table';
 import { cancelOrder, getOrderPage, stopOrder } from '#/api/his/order';
-import { $t } from '#/locales';
 
-import { getOrderStatusColor, getOrderStatusLabel, useGridColumns, useGridFormSchema } from './data';
+import { useGridColumns, useGridFormSchema } from './data';
 import Form from './modules/form.vue';
 
 const [FormModal, formModalApi] = useVbenModal({

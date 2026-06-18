@@ -11,62 +11,99 @@ const routes: RouteRecordRaw[] = [
       hideInMenu: true,
     },
     children: [
-      // 门诊管理详情页
+      // ==================== 门诊管理详情页 ====================
       {
-        path: 'patient/detail/:id',
+        path: 'outpatient/patient/detail/:id',
         name: 'HisPatientDetail',
         meta: {
           title: '患者详情',
-          activePath: '/his/patient',
+          activePath: '/his/outpatient/patient',
         },
-        component: () => import('#/views/his/patient/detail/index.vue'),
+        component: () => import('#/views/his/outpatient/patient/detail/index.vue'),
       },
       {
-        path: 'register/detail/:id',
+        path: 'outpatient/register/detail/:id',
         name: 'HisRegisterDetail',
         meta: {
           title: '挂号详情',
-          activePath: '/his/register',
+          activePath: '/his/outpatient/register',
         },
-        component: () => import('#/views/his/register/detail/index.vue'),
+        component: () => import('#/views/his/outpatient/register/detail/index.vue'),
       },
       {
-        path: 'prescription/detail/:id',
+        path: 'outpatient/prescription/detail/:id',
         name: 'HisPrescriptionDetail',
         meta: {
           title: '处方详情',
-          activePath: '/his/prescription',
+          activePath: '/his/outpatient/prescription',
         },
-        component: () => import('#/views/his/prescription/detail/index.vue'),
+        component: () => import('#/views/his/outpatient/prescription/detail/index.vue'),
       },
-      // 住院管理详情页
       {
-        path: 'admission/detail/:id',
+        path: 'outpatient/fee/detail/:id',
+        name: 'HisFeeDetail',
+        meta: {
+          title: '门诊费用详情',
+          activePath: '/his/outpatient/fee',
+        },
+        component: () => import('#/views/his/outpatient/fee/detail/index.vue'),
+      },
+      // ==================== 住院管理详情页 ====================
+      {
+        path: 'inpatient/admission/detail/:id',
         name: 'HisAdmissionDetail',
         meta: {
-          title: '住院详情',
-          activePath: '/his/admission',
+          title: '入院详情',
+          activePath: '/his/inpatient/admission',
         },
-        component: () => import('#/views/his/admission/detail/index.vue'),
+        component: () => import('#/views/his/inpatient/admission/detail/index.vue'),
       },
       {
-        path: 'settlement/detail/:id',
+        path: 'inpatient/discharge/detail/:id',
+        name: 'HisDischargeDetail',
+        meta: {
+          title: '出院详情',
+          activePath: '/his/inpatient/discharge',
+        },
+        component: () => import('#/views/his/inpatient/discharge/detail/index.vue'),
+      },
+      {
+        path: 'inpatient/settlement/detail/:id',
         name: 'HisSettlementDetail',
         meta: {
-          title: '结算详情',
-          activePath: '/his/settlement',
+          title: '住院结算详情',
+          activePath: '/his/inpatient/settlement',
         },
-        component: () => import('#/views/his/settlement/detail/index.vue'),
+        component: () => import('#/views/his/inpatient/settlement/detail/index.vue'),
       },
-      // 药品管理详情页
       {
-        path: 'drug/detail/:id',
+        path: 'inpatient/order/detail/:id',
+        name: 'HisOrderDetail',
+        meta: {
+          title: '医嘱详情',
+          activePath: '/his/inpatient/order',
+        },
+        component: () => import('#/views/his/inpatient/order/detail/index.vue'),
+      },
+      // ==================== 药品管理详情页 ====================
+      {
+        path: 'pharmacy/drug/detail/:id',
         name: 'HisDrugDetail',
         meta: {
           title: '药品详情',
-          activePath: '/his/drug',
+          activePath: '/his/pharmacy/drug',
         },
-        component: () => import('#/views/his/drug/detail/index.vue'),
+        component: () => import('#/views/his/pharmacy/drug/detail/index.vue'),
+      },
+      // ==================== 医嘱执行详情页 ====================
+      {
+        path: 'order-exec/medication-admin/detail/:id',
+        name: 'HisMedicationAdminDetail',
+        meta: {
+          title: '给药记录详情',
+          activePath: '/his/order-exec/medication-admin',
+        },
+        component: () => import('#/views/his/order-exec/medication-admin/detail/index.vue'),
       },
     ],
   },

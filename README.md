@@ -7,6 +7,49 @@
 
 如果这个项目让你有所收获，记得 Star 关注哦，这对我是非常不错的鼓励与支持。
 
+## 🎯 项目特色
+
+本仓库在芋道 Vben5 前端源码基础上，构建了一套完整的 **AI Skill 前端开发规范体系**，让 AI 能够：
+
+- 理解 Monorepo 架构和分层设计
+- 自动生成符合项目标准的前端代码
+- 遵循 BEM 命名、适配器模式、无头组件等最佳实践
+- 支持多 UI 框架（Ant Design Vue / Element Plus / Naive UI / TDesign）
+
+## 🆚 与上游仓库的区别
+
+本仓库基于 [yudaocode/yudao-ui-admin-vben](https://github.com/yudaocode/yudao-ui-admin-vben) 同步代码，在其基础上新增了 AI Skill 知识库体系。上游代码保持原样，以下为本仓库独有的内容：
+
+| 新增内容 | 路径 | 说明 |
+|---------|------|------|
+| **模块 Skill** | `skills/modules/` | 核心包、效应层、Ant Design 应用 3 个模块的结构化 Skill YAML |
+| **Skill 模板** | `skills/templates/` | 新模块 Skill 编写模板 |
+| **UI 开发指南** | `skills/ui/` | TDesign 等 UI 框架的开发规范 |
+| **使用指南** | `skills/usage/` | 快速上手文档 |
+| **Skill 索引** | `skills/index.yaml` | 所有模块 Skill 的注册与状态追踪 |
+
+> 同步方式：定期从 upstream/master 拉取最新代码合并，自定义文件始终保留。
+
+## 📁 Skill 体系结构
+
+```
+skills/
+├── index.yaml                 # Skill 索引（模块注册、状态追踪）
+├── modules/                   # 模块 Skill
+│   ├── core/                 # 核心包 (@core)
+│   │   └── skill-core.yaml   #   base / composables / preferences / ui-kit
+│   ├── effects/              # 效应层
+│   │   └── skill-effects.yaml#   access / request / hooks / layouts / plugins
+│   └── app-antd/             # Ant Design Vue 应用
+│       └── skill-app-antd.yaml#  路由 / 状态管理 / API层 / 页面结构
+├── templates/                 # Skill 编写模板
+│   └── skill-template.yaml
+├── ui/                        # UI 框架开发指南
+│   └── frame/tdesgin/
+└── usage/                     # 使用指南
+    └── quick-start.md
+```
+
 ## 🐶 新手必读
 
 - nodejs >= v20.19.0（推荐 v22 / v24） && pnpm >= 10.32.1（强制使用 pnpm）
@@ -183,7 +226,7 @@
 | 🚀 | 链路追踪 | 接入 SkyWalking 组件，实现链路追踪 |
 | 🚀 | 日志中心 | 接入 SkyWalking 组件，实现日志中心 |
 | 🚀 | 服务保障 | 基于 Redis 实现分布式锁、幂等、限流功能，满足高并发场景 |
-| 🚀 | 日志服务 | 轻量级日志中心，查看远程服务器的日志 |
+| 🚀 | 日志服务 | 軽量级日志中心，查看远程服务器的日志 |
 | 🚀 | 单元测试 | 基于 JUnit + Mockito 实现单元测试，保证功能的正确性、代码的质量等 |
 
 ![功能图](/.gitee/image/common/infra-feature.png)
@@ -285,3 +328,10 @@
 | 聊天界面 | 聊天管理 |
 | --- | --- |
 | ![聊天界面](/.gitee/image/common/im-preview-home.png) | ![聊天管理](/.gitee/image/common/im-preview-manager.png) |
+
+## 🔗 相关链接
+
+- [yudao-ui-admin-vben](https://github.com/yudaocode/yudao-ui-admin-vben) - 上游前端仓库
+- [yudao-skill-pro](https://github.com/cilangzzz/yudao-skill-pro) - 后端 Skill 知识库
+- [芋道开发文档](https://doc.iocoder.cn/) - 芋道官方文档
+- [vue-vben-admin](https://github.com/vbenjs/vue-vben-admin) - Vben Admin 上游

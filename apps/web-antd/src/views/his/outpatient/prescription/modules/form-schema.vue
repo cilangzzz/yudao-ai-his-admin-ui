@@ -16,8 +16,6 @@ import {
   Divider,
 } from 'ant-design-vue';
 
-import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
-
 const props = defineProps<{
   formData: OpPrescriptionApi.PrescriptionSaveReqVO;
 }>();
@@ -62,8 +60,10 @@ function removeItem(index: number) {
 
 /** 更新药品项金额 */
 function updateItemAmount(index: number) {
-  const item = props.formData.items[index];
-  item.totalAmount = (item.unitPrice || 0) * (item.quantity || 0);
+  const item = props.formData.items.at(index);
+  if (item) {
+    item.totalAmount = (item.unitPrice || 0) * (item.quantity || 0);
+  }
 }
 </script>
 
@@ -107,7 +107,6 @@ function updateItemAmount(index: number) {
       <Space>
         <span>药品明细</span>
         <Button type="link" size="small" @click="addItem">
-          <template #icon><PlusOutlined /></template>
           添加药品
         </Button>
       </Space>
@@ -121,7 +120,7 @@ function updateItemAmount(index: number) {
       row-key="drugCode"
     >
       <TableColumn title="药品名称" width="150">
-        <template #default="{ record, index }">
+        <template #default="{ record }">
           <Input v-model:value="record.drugName" placeholder="药品名称" size="small" />
         </template>
       </TableColumn>
@@ -204,7 +203,7 @@ function updateItemAmount(index: number) {
       <TableColumn title="操作" width="60" fixed="right">
         <template #default="{ index }">
           <Button type="link" danger size="small" @click="removeItem(index)">
-            <template #icon><DeleteOutlined /></template>
+            删除
           </Button>
         </template>
       </TableColumn>

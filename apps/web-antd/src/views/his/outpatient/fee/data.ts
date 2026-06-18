@@ -5,8 +5,6 @@ import { h } from 'vue';
 
 import { Tag } from 'ant-design-vue';
 
-import { useAccess } from '@vben/access';
-
 /** 支付状态字典 */
 const PAY_STATUS_DICT = [
   { label: '待支付', value: 0, color: 'orange' },
@@ -16,8 +14,6 @@ const PAY_STATUS_DICT = [
 
 /** 表格列配置 */
 export function useGridColumns(): VxeTableGridOptions['columns'] {
-  const { hasAccessByCodes } = useAccess();
-
   return [
     { type: 'seq', width: 50 },
     {

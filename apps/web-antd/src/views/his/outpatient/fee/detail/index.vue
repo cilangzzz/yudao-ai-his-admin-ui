@@ -38,11 +38,11 @@ const itemColumns = [
   { title: '项目类型', dataIndex: 'itemType', width: 80, customRender: ({ text }: { text: number }) => ITEM_TYPE_DICT[text] || '-' },
   { title: '规格', dataIndex: 'spec', width: 100 },
   { title: '单位', dataIndex: 'unit', width: 60 },
-  { title: '数量', dataIndex: 'quantity', width: 80, align: 'right' },
-  { title: '单价', dataIndex: 'unitPrice', width: 100, align: 'right', customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
-  { title: '总金额', dataIndex: 'totalAmount', width: 100, align: 'right', customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
-  { title: '优惠金额', dataIndex: 'discountAmount', width: 100, align: 'right', customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
-  { title: '实付金额', dataIndex: 'payAmount', width: 100, align: 'right', customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
+  { title: '数量', dataIndex: 'quantity', width: 80, align: 'right' as const },
+  { title: '单价', dataIndex: 'unitPrice', width: 100, align: 'right' as const, customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
+  { title: '总金额', dataIndex: 'totalAmount', width: 100, align: 'right' as const, customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
+  { title: '优惠金额', dataIndex: 'discountAmount', width: 100, align: 'right' as const, customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
+  { title: '实付金额', dataIndex: 'payAmount', width: 100, align: 'right' as const, customRender: ({ text }: { text: number }) => `¥${(text / 100).toFixed(2)}` },
   { title: '备注', dataIndex: 'remark', width: 150, ellipsis: true },
 ];
 

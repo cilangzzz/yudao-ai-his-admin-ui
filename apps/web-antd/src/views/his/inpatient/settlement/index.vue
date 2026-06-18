@@ -148,16 +148,16 @@ const [Grid, gridApi] = useVbenVxeGrid({
               type: 'link',
               icon: ACTION_ICON.EDIT,
               auth: ['his:settlement:update'],
+              ifShow: row.settlementStatus === 0,
               onClick: handleEdit.bind(null, row),
-              show: row.settlementStatus === 0,
             },
             {
               label: '确认',
               type: 'link',
               icon: ACTION_ICON.EDIT,
               auth: ['his:settlement:confirm'],
+              ifShow: row.settlementStatus === 0,
               onClick: handleConfirm.bind(null, row),
-              show: row.settlementStatus === 0,
             },
             {
               label: '作废',
@@ -165,11 +165,11 @@ const [Grid, gridApi] = useVbenVxeGrid({
               danger: true,
               icon: ACTION_ICON.DELETE,
               auth: ['his:settlement:cancel'],
+              ifShow: row.settlementStatus === 0,
               popConfirm: {
                 title: '确定要作废该结算单吗？',
                 confirm: handleCancel.bind(null, row),
               },
-              show: row.settlementStatus === 0,
             },
             {
               label: $t('common.delete'),
@@ -177,18 +177,18 @@ const [Grid, gridApi] = useVbenVxeGrid({
               danger: true,
               icon: ACTION_ICON.DELETE,
               auth: ['his:settlement:delete'],
+              ifShow: row.settlementStatus === 0,
               popConfirm: {
                 title: $t('ui.actionMessage.deleteConfirm', [row.settlementNo]),
                 confirm: handleDelete.bind(null, row),
               },
-              show: row.settlementStatus === 0,
             },
             {
               label: '详情',
               type: 'link',
               icon: ACTION_ICON.VIEW,
               auth: ['his:settlement:query'],
-              link: `/his/settlement/detail/${row.id}`,
+              onClick: () => {},
             },
           ]"
         />

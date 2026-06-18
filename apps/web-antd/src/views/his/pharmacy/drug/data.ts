@@ -1,13 +1,12 @@
 import type { VbenFormSchema } from '#/adapter/form';
 import type { VxeTableGridOptions } from '#/adapter/vxe-table';
-import type { HisDrugApi } from '#/api/his/drug';
 
 import { h } from 'vue';
 
 import { Tag } from 'ant-design-vue';
 
 /** 药品类型字典 */
-const DRUG_TYPE_DICT: HisDrugApi.Drug[] = [
+const DRUG_TYPE_DICT = [
   { label: '西药', value: 1 },
   { label: '中成药', value: 2 },
   { label: '中草药', value: 3 },

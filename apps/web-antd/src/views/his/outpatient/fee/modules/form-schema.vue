@@ -6,17 +6,6 @@ import { Form, FormItem, Input, InputNumber } from 'ant-design-vue';
 defineProps<{
   formData: OpFeeApi.FeeSaveReqVO;
 }>();
-
-/** 格式化金额显示（分转元） */
-function formatAmount(value: number): string {
-  return (value / 100).toFixed(2);
-}
-
-/** 解析金额输入（元转分） */
-function parseAmount(value: string): number {
-  const num = parseFloat(value);
-  return isNaN(num) ? 0 : Math.round(num * 100);
-}
 </script>
 
 <template>
@@ -68,8 +57,6 @@ function parseAmount(value: string): number {
         placeholder="请输入总金额"
         :min="0"
         :precision="2"
-        :formatter="(value: number) => `¥ ${value}`"
-        :parser="(value: string) => value.replace(/¥\s?/g, '')"
         style="width: 100%"
       />
     </FormItem>
@@ -79,8 +66,6 @@ function parseAmount(value: string): number {
         placeholder="请输入优惠金额"
         :min="0"
         :precision="2"
-        :formatter="(value: number) => `¥ ${value}`"
-        :parser="(value: string) => value.replace(/¥\s?/g, '')"
         style="width: 100%"
       />
     </FormItem>
@@ -90,8 +75,6 @@ function parseAmount(value: string): number {
         placeholder="请输入实付金额"
         :min="0"
         :precision="2"
-        :formatter="(value: number) => `¥ ${value}`"
-        :parser="(value: string) => value.replace(/¥\s?/g, '')"
         style="width: 100%"
       />
     </FormItem>

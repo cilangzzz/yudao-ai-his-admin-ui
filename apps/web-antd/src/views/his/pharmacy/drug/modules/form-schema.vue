@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { HisDrugApi } from '#/api/his/drug';
 
-import { Form, FormItem, Input, InputNumber, Select, Switch, Textarea } from 'ant-design-vue';
+import { Form, FormItem, Input, InputNumber, Select, Textarea } from 'ant-design-vue';
 
 defineProps<{
   formData: HisDrugApi.DrugSaveReqVO;

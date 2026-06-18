@@ -3,18 +3,11 @@ import type { HisPatientApi } from '#/api/his/patient';
 
 import { computed, ref } from 'vue';
 
-import {
-  onCloseModal,
-  useVbenModal,
-} from '@vben/common-ui';
+import { useVbenModal } from '@vben/common-ui';
 
 import { message } from 'ant-design-vue';
 
-import {
-  createPatient,
-  getPatient,
-  updatePatient,
-} from '#/api/his/patient';
+import { createPatient, updatePatient } from '#/api/his/patient';
 
 import FormSchema from './form-schema.vue';
 
@@ -57,7 +50,7 @@ const [Modal, modalApi] = useVbenModal({
   },
   onOpenChange(isOpen) {
     if (isOpen) {
-      const data = modalApi.getData<HisPatientApi.Patient | null>();
+      const data = modalApi.getData<HisPatientApi.Patient>();
       if (data) {
         formData.value = {
           id: data.id,
@@ -80,6 +73,9 @@ const [Modal, modalApi] = useVbenModal({
           name: '',
           idCardNo: '',
           gender: 1,
+          birthday: '',
+          phone: '',
+          address: '',
         };
       }
     }

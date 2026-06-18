@@ -1,10 +1,9 @@
+import type { VbenFormSchema } from '#/adapter/form';
 import type { VxeTableGridOptions } from '#/adapter/vxe-table';
 
 import { h } from 'vue';
 
 import { Tag } from 'ant-design-vue';
-
-import { ACTION_ICON, renderSetDictTag } from '#/adapter/vxe-table';
 
 /** 性别字典 */
 const GENDER_DICT = [
@@ -79,42 +78,42 @@ export function useGridColumns(): VxeTableGridOptions['columns'] {
 }
 
 /** 表格搜索表单配置 */
-export function useGridFormSchema(): VxeTableGridOptions['formConfig']['items'] {
+export function useGridFormSchema(): VbenFormSchema[] {
   return [
     {
-      field: 'patientNo',
-      title: '患者编号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入患者编号' },
+      fieldName: 'patientNo',
+      label: '患者编号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入患者编号',
+        allowClear: true,
       },
     },
     {
-      field: 'name',
-      title: '姓名',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入姓名' },
+      fieldName: 'name',
+      label: '姓名',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入姓名',
+        allowClear: true,
       },
     },
     {
-      field: 'idCardNo',
-      title: '身份证号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入身份证号' },
+      fieldName: 'idCardNo',
+      label: '身份证号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入身份证号',
+        allowClear: true,
       },
     },
     {
-      field: 'phone',
-      title: '联系电话',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入联系电话' },
+      fieldName: 'phone',
+      label: '联系电话',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入联系电话',
+        allowClear: true,
       },
     },
   ];

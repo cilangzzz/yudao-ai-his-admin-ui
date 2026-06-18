@@ -1,3 +1,4 @@
+import type { VbenFormSchema } from '#/adapter/form';
 import type { VxeTableGridOptions } from '#/adapter/vxe-table';
 
 import { h } from 'vue';
@@ -123,46 +124,43 @@ export function useGridColumns(): VxeTableGridOptions['columns'] {
 }
 
 /** 表格搜索表单配置 */
-export function useGridFormSchema(): VxeTableGridOptions['formConfig']['items'] {
+export function useGridFormSchema(): VbenFormSchema[] {
   return [
     {
-      field: 'registerNo',
-      title: '挂号单号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入挂号单号' },
+      fieldName: 'registerNo',
+      label: '挂号单号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入挂号单号',
+        allowClear: true,
       },
     },
     {
-      field: 'patientName',
-      title: '患者姓名',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入患者姓名' },
+      fieldName: 'patientName',
+      label: '患者姓名',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入患者姓名',
+        allowClear: true,
       },
     },
     {
-      field: 'idCardNo',
-      title: '身份证号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入身份证号' },
+      fieldName: 'idCardNo',
+      label: '身份证号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入身份证号',
+        allowClear: true,
       },
     },
     {
-      field: 'status',
-      title: '状态',
-      span: 4,
-      itemRender: {
-        name: 'ASelect',
-        props: {
-          placeholder: '请选择状态',
-          options: STATUS_DICT.map((d) => ({ label: d.label, value: d.value })),
-          allowClear: true,
-        },
+      fieldName: 'status',
+      label: '状态',
+      component: 'Select',
+      componentProps: {
+        placeholder: '请选择状态',
+        options: STATUS_DICT.map((d) => ({ label: d.label, value: d.value })),
+        allowClear: true,
       },
     },
   ];

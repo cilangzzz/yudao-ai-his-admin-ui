@@ -1,3 +1,4 @@
+import type { VbenFormSchema } from '#/adapter/form';
 import type { VxeTableGridOptions } from '#/adapter/vxe-table';
 
 import { h } from 'vue';
@@ -5,7 +6,7 @@ import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
 
 /** 入院状态字典 */
-const STATUS_DICT = [
+export const STATUS_DICT = [
   { label: '待入院', value: 0, color: 'default' },
   { label: '在院', value: 1, color: 'green' },
   { label: '待出院', value: 2, color: 'orange' },
@@ -13,7 +14,7 @@ const STATUS_DICT = [
 ];
 
 /** 入院方式字典 */
-const ADMISSION_WAY_DICT = [
+export const ADMISSION_WAY_DICT = [
   { label: '门诊入院', value: 1 },
   { label: '急诊入院', value: 2 },
   { label: '转院入院', value: 3 },
@@ -21,7 +22,7 @@ const ADMISSION_WAY_DICT = [
 ];
 
 /** 入院病情字典 */
-const ADMISSION_CONDITION_DICT = [
+export const ADMISSION_CONDITION_DICT = [
   { label: '一般', value: 1 },
   { label: '急', value: 2 },
   { label: '危重', value: 3 },
@@ -126,46 +127,43 @@ export function useGridColumns(): VxeTableGridOptions['columns'] {
 }
 
 /** 表格搜索表单配置 */
-export function useGridFormSchema(): VxeTableGridOptions['formConfig']['items'] {
+export function useGridFormSchema(): VbenFormSchema[] {
   return [
     {
-      field: 'admissionNo',
-      title: '住院号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入住院号' },
+      fieldName: 'admissionNo',
+      label: '住院号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入住院号',
+        allowClear: true,
       },
     },
     {
-      field: 'patientName',
-      title: '患者姓名',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入患者姓名' },
+      fieldName: 'patientName',
+      label: '患者姓名',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入患者姓名',
+        allowClear: true,
       },
     },
     {
-      field: 'idCardNo',
-      title: '身份证号',
-      span: 4,
-      itemRender: {
-        name: 'AInput',
-        props: { placeholder: '请输入身份证号' },
+      fieldName: 'idCardNo',
+      label: '身份证号',
+      component: 'Input',
+      componentProps: {
+        placeholder: '请输入身份证号',
+        allowClear: true,
       },
     },
     {
-      field: 'admissionStatus',
-      title: '状态',
-      span: 4,
-      itemRender: {
-        name: 'ASelect',
-        props: {
-          placeholder: '请选择状态',
-          options: STATUS_DICT.map((d) => ({ label: d.label, value: d.value })),
-          allowClear: true,
-        },
+      fieldName: 'admissionStatus',
+      label: '状态',
+      component: 'Select',
+      componentProps: {
+        placeholder: '请选择状态',
+        options: STATUS_DICT.map((d) => ({ label: d.label, value: d.value })),
+        allowClear: true,
       },
     },
   ];

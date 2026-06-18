@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router';
 
 import { Page } from '@vben/common-ui';
 
-import { Card, Descriptions, DescriptionsItem, Tag, Divider, Table } from 'ant-design-vue';
+import { Card, Descriptions, DescriptionsItem, Tag } from 'ant-design-vue';
 
 import { getRegister } from '#/api/his/register';
 

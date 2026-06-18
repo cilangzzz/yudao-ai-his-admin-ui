@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { HisAdmissionApi } from '#/api/his/admission';
+import type { OpFeeApi } from '#/api/his/fee';
 
 import { computed, ref } from 'vue';
 
@@ -7,7 +7,7 @@ import { useVbenModal } from '@vben/common-ui';
 
 import { message } from 'ant-design-vue';
 
-import { createAdmission, updateAdmission } from '#/api/his/admission';
+import { createFee, updateFee } from '#/api/his/fee';
 
 import FormSchema from './form-schema.vue';
 
@@ -15,23 +15,18 @@ const emit = defineEmits<{
   success: [];
 }>();
 
-const formData = ref<HisAdmissionApi.AdmissionSaveReqVO>({
+const formData = ref<OpFeeApi.FeeSaveReqVO>({
+  registerId: 0,
   patientId: 0,
   patientName: '',
-  idCardNo: '',
-  phone: '',
   deptId: 0,
   deptName: '',
-  wardId: 0,
-  wardName: '',
-  bedId: 0,
-  bedNo: '',
   doctorId: 0,
   doctorName: '',
-  admissionWay: 1,
-  admissionCondition: 1,
-  diagnosis: '',
-  depositAmount: 0,
+  totalAmount: 0,
+  discountAmount: 0,
+  payAmount: 0,
+  remark: '',
 });
 
 const [Modal, modalApi] = useVbenModal({
@@ -39,11 +34,11 @@ const [Modal, modalApi] = useVbenModal({
     const isEdit = !!formData.value.id;
     try {
       if (isEdit) {
-        await updateAdmission(formData.value);
+        await updateFee(formData.value);
         message.success('更新成功');
       } else {
-        await createAdmission(formData.value);
-        message.success('入院登记成功');
+        await createFee(formData.value);
+        message.success('创建成功');
       }
       emit('success');
       modalApi.close();
@@ -53,45 +48,35 @@ const [Modal, modalApi] = useVbenModal({
   },
   onOpenChange(isOpen) {
     if (isOpen) {
-      const data = modalApi.getData<HisAdmissionApi.Admission>();
+      const data = modalApi.getData<OpFeeApi.Fee>();
       if (data) {
         formData.value = {
           id: data.id,
+          registerId: data.registerId,
           patientId: data.patientId,
           patientName: data.patientName,
-          idCardNo: data.idCardNo,
-          phone: data.phone,
           deptId: data.deptId,
           deptName: data.deptName,
-          wardId: data.wardId,
-          wardName: data.wardName,
-          bedId: data.bedId,
-          bedNo: data.bedNo,
           doctorId: data.doctorId,
           doctorName: data.doctorName,
-          admissionWay: data.admissionWay,
-          admissionCondition: data.admissionCondition,
-          diagnosis: data.diagnosis,
-          depositAmount: data.depositAmount,
+          totalAmount: data.totalAmount,
+          discountAmount: data.discountAmount,
+          payAmount: data.payAmount,
+          remark: data.remark,
         };
       } else {
         formData.value = {
+          registerId: 0,
           patientId: 0,
           patientName: '',
-          idCardNo: '',
-          phone: '',
           deptId: 0,
           deptName: '',
-          wardId: 0,
-          wardName: '',
-          bedId: 0,
-          bedNo: '',
           doctorId: 0,
           doctorName: '',
-          admissionWay: 1,
-          admissionCondition: 1,
-          diagnosis: '',
-          depositAmount: 0,
+          totalAmount: 0,
+          discountAmount: 0,
+          payAmount: 0,
+          remark: '',
         };
       }
     }
@@ -99,7 +84,7 @@ const [Modal, modalApi] = useVbenModal({
 });
 
 const getTitle = computed(() => {
-  return formData.value.id ? '编辑入院记录' : '入院登记';
+  return formData.value.id ? '编辑费用' : '新增费用';
 });
 </script>
 

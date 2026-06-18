@@ -10,7 +10,6 @@ import { Button, message, Tag } from 'ant-design-vue';
 
 import { ACTION_ICON, TableAction, useVbenVxeGrid } from '#/adapter/vxe-table';
 import {
-  deleteRegister,
   getRegisterPage,
   refundRegister,
   startVisit,
